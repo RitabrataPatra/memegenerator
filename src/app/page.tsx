@@ -1,9 +1,17 @@
-import Image from "next/image";
+"use client";
+import React from "react";
+import { IKImage, ImageKitProvider } from "imagekitio-next";
+
+const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
 
 export default function Home() {
   return (
-  <div>
-    <Image src="https://ik.imagekit.io/tzrgubobm/tr:w-300,h-300,fo-face:r-max,l-text,i-hello,fs-60,co-red,l-end/me2.png?updatedAt=1735370674771" alt="Picture of the author" width={500} height={500}/>
-  </div>
+    <div className="App">
+      <ImageKitProvider urlEndpoint={urlEndpoint}>
+        <h1>ImageKit Next.js quick start</h1>
+        <h2>Loading image from an absolute path</h2>
+        <IKImage src="https://ik.imagekit.io/demo/default-image.jpg" width="400" height="400" alt="Alt text" />
+      </ImageKitProvider>
+    </div>
   );
 }
