@@ -10,10 +10,11 @@ const imagekit = new ImageKit({
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q: string };
+  searchParams: Promise<{ q: string }>;
 }) {
   unstable_noStore();
-  const query = await Promise.resolve(searchParams.q);
+  const resolvedSearchParams = await searchParams;
+  const query = resolvedSearchParams?.q || "";
 
   const files = await imagekit.listFiles({
     searchQuery: `name:${query}`,
