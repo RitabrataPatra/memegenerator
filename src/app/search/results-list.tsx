@@ -3,11 +3,11 @@
 import { FileObject, ListFileResponse } from "imagekit/dist/libs/interfaces";
 import { IKImage } from "imagekitio-next";
 import { urlEndpoint } from "../Providers";
+import { toDateFunction, toFileSize } from "@/helpers/utils";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -20,8 +20,7 @@ const ResultList = ({ files }: { files: ListFileResponse }) => {
         return (
           <Card key={(file as FileObject).fileId} className="">
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>{file.name}</CardTitle>
             </CardHeader>
             <CardContent>
               <IKImage
@@ -33,8 +32,9 @@ const ResultList = ({ files }: { files: ListFileResponse }) => {
                 height={200}
               />
             </CardContent>
-            <CardFooter>
-              <p>Card Footer</p>
+            <CardFooter className="flex flex-col text-left items-start gap-2">
+              <p className="text-xs">Created at {toDateFunction( (file as FileObject).createdAt)}</p>
+              <p className="text-xs">Size is {toFileSize( (file as FileObject).size)}</p>
             </CardFooter>
           </Card>
         );

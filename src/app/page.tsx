@@ -8,6 +8,7 @@ import {
 
 export default function Home() {
   const [filePath, setFilePath] = React.useState<string>("");
+  const [fileName, setFileName] = React.useState<string>("");
 
   const onError = (err: UploadError) => {
     console.log("Error", err);
@@ -16,6 +17,7 @@ export default function Home() {
   const onSuccess = (res: IKUploadResponse) => {
     console.log("Success", res);
     setFilePath(res.filePath);
+    setFileName(res.name);
   };
 
   return (
@@ -24,7 +26,7 @@ export default function Home() {
 
       {filePath && (
         <>
-          <h2>Loading image from an absolute path</h2>
+          <h2>Loading image : {fileName}</h2>
           <IKImage alt="image" width="400" height="300" path={filePath} />
         </>
       )}
@@ -32,7 +34,7 @@ export default function Home() {
       <div>
         <h1>File Upload</h1>
         <IKUpload
-          fileName="test-upload.png"
+          fileName={fileName}
           onError={onError}
           onSuccess={onSuccess}
         />

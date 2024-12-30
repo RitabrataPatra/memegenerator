@@ -21,8 +21,8 @@ export default async function SearchPage({
   });
   // console.log(files);
   return (
-    <div className="container space-y-8 py-8">
-      <h1 className="text-3xl font-bold">Search results for : {query}</h1>
+    <div className="p-4 space-y-8 py-8">
+      <h1 className="text-3xl font-bold">Search Results</h1>
       <ResultList files={files}/>
     </div>
   );
