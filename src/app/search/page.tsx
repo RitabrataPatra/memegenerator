@@ -1,5 +1,6 @@
 import { unstable_noStore } from "next/cache";
-import ImageKit from "imagekit";
+import ImageKit from "imagekit";;
+import ResultList from "./results-list";
 
 const imagekit = new ImageKit({
   publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
@@ -17,14 +18,11 @@ export default async function SearchPage({
   const files = await imagekit.listFiles({
     searchQuery: `name:${query}`,
   });
-
+  // console.log(files);
   return (
-    <div>
-      {files.map((file) => (
-        <div key={file.updatedAt}>
-          <p>{file.name}</p>
-        </div>
-      ))}
+    <div className="container space-y-8 py-8">
+      <h1 className="text-3xl font-bold">Search results for : {query}</h1>
+      <ResultList files={files}/>
     </div>
   );
 }
