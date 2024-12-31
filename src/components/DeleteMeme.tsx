@@ -8,17 +8,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Trash2Icon } from "lucide-react";
+import { FileObject } from "imagekit/dist/libs/interfaces";
 
-const DeleteMeme = () => {
+const DeleteMeme = ({file} : {file : FileObject}) => {
   return (
     <Dialog>
       <DialogTrigger><Trash2Icon size={20} color="brown"/></DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle className="text-center"><span className="text-red-500">Delete</span> {file.customMetadata?.displayName ?? file.name} ?</DialogTitle>
           <DialogDescription>
             This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            file and remove it from our servers.
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

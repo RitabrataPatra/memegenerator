@@ -27,7 +27,7 @@ const ResultList = ({ files }: { files: ListFileResponse }) => {
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>{(file as FileObject).customMetadata?.displayName ?? file.name}</CardTitle>
               <div>
-                <DeleteMeme/>
+                <DeleteMeme file={file as FileObject}/>
               </div>
               
             </CardHeader>
