@@ -47,7 +47,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   }, []);
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-black">
+      <div className="flex h-screen items-center justify-center bg-neutral-900">
         <Loader className="animate-spin" size={50} color="blue" />
       </div>
     );
