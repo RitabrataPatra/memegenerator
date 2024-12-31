@@ -15,15 +15,21 @@ import {
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import DeleteMeme from "@/components/DeleteMeme";
+
 
 const ResultList = ({ files }: { files: ListFileResponse }) => {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
       {files.map((file) => {
         return (
-          <Card key={(file as FileObject).fileId} className="">
-            <CardHeader>
-              <CardTitle>{file.name}</CardTitle>
+          <Card key={(file as FileObject).fileId} >
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle>{(file as FileObject).customMetadata?.displayName ?? file.name}</CardTitle>
+              <div>
+                <DeleteMeme/>
+              </div>
+              
             </CardHeader>
             <CardContent>
               <Link href={(file as FileObject).url}>
