@@ -84,8 +84,8 @@ const Upload = () => {
                     if (ikUploadRefTest.current) {
                       ikUploadRefTest.current.click();
                     }
-                    
                   }}
+                  disabled={isUploading}
                 >
                   {isUploading ? (
                     "Uploading..."

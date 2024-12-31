@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import DeleteMeme from "@/components/DeleteMeme";
 
 
+
 const ResultList = ({ files }: { files: ListFileResponse }) => {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
