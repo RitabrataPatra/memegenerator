@@ -1,5 +1,6 @@
-import { Input } from "@/components/ui/input";
+
 import { redirect } from "next/navigation";
+import SearchInput from "./SearchInput";
 
 export function Search() {
   return (
@@ -11,12 +12,7 @@ export function Search() {
           redirect(`/search?q=${search}`);
         }
       }>
-        <Input
-          name="search"
-          type="search"
-          placeholder="Search memes..."
-          className="md:w-[100px] lg:w-[300px]"
-        />
+        <SearchInput/>
       </form>
     </div>
   );
