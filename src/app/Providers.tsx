@@ -6,7 +6,7 @@ import React from "react";
 
 const authenticator = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth");
+      const response = await fetch("/api/auth");
       console.log(response);
 
       if (!response.ok) {

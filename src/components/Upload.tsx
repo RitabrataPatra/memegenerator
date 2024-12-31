@@ -80,6 +80,7 @@ const Upload = () => {
               {ikUploadRefTest && (
                 <Button
                   onClick={() => {
+                    setIsUploading(true);
                     if (ikUploadRefTest.current) {
                       ikUploadRefTest.current.click();
                     }
@@ -91,7 +92,7 @@ const Upload = () => {
                   ) : (
                     <>
                       <UploadIcon />
-                      <p className="text-sm">Select and Upload Files </p>
+                      <p className="text-sm">Select and Upload Files</p>
                     </>
                   )}
                 </Button>
