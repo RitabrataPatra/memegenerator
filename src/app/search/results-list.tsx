@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const ResultList = ({ files }: { files: ListFileResponse }) => {
   return (
@@ -36,13 +37,22 @@ const ResultList = ({ files }: { files: ListFileResponse }) => {
                 />
               </Link>
             </CardContent>
-            <CardFooter className="flex flex-col text-left items-start gap-2">
-              <p className="text-xs">
-                Created at {toDateFunction((file as FileObject).createdAt)}
-              </p>
-              <p className="text-xs">
-                Size is {toFileSize((file as FileObject).size)}
-              </p>
+            <CardFooter className="flex flex-row justify-between">
+              <div className="flex flex-col gap-2">
+                <p className="text-xs">
+                  Created at {toDateFunction((file as FileObject).createdAt)}
+                </p>
+                <p className="text-xs">
+                  Size is {toFileSize((file as FileObject).size)}
+                </p>
+              </div>
+              <div>
+                <Button asChild size={"sm"}>
+                  <Link href={`/customize/${(file as FileObject).fileId}`} className="font-semibold">
+                    Customize
+                  </Link>
+                </Button>
+              </div>
             </CardFooter>
           </Card>
         );
